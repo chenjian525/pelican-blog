@@ -1,0 +1,16 @@
+{% if DEFAULT_PAGINATION %}
+<div id="pagination">
+    {% if articles_page.has_previous() %}
+    <p class="alignleft">
+        « <a href="{{ SITEURL }}/{{ articles_previous_page.url }}">Prev</a>
+    </p>
+    {% endif %}
+
+    {% if articles_page.has_next() %}
+    <p class="alignright">
+        <a href="{{ SITEURL }}/{{ articles_next_page.url }}">Next</a> »
+    </p>
+    {% endif %}
+</div>
+<div class="break"></div>
+{% endif %}

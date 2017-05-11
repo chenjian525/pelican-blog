@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block content %}
+<section id="content" class="single">
+    {% for article in articles_page.object_list %}
+    <div class="post">
+        <h2>
+            <a href="{{ SITEURL }}/{{ article.url }}" rel="bookmark"
+                title="Permalink to {{ article.title|striptags }}">{{ article.title }}</a>
+        </h2>
+        <h4 style="margin-top:0px;">
+            {{ article.date.strftime("%Y/%m/%d") }} · {{ '<a href="%s/category/%s">%s</a>' % (SITEURL, article.category|lower(), article.category|lower()) }}
+        </h4><!-- /.post-info -->
+        <div>
+            {{ article.content }}
+        </div><!-- /.entry-content -->
+        <div class="separator"></div>
+    </div>
+    {% endfor %}
+{% if articles_page.has_other_pages() %}
+    {% include 'pagination.html' %}
+{% endif %}
+</section><!-- /#content -->
+{% endblock content %}

@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block head %}
+  {{ super() }}
+  {% if article.description %}
+    <meta name="description" content="{{ article.description }}" />
+  {% endif %}
+
+  {% for tag in article.tags %}
+    <meta name="tags" content="{{ tag }}" />
+  {% endfor %}
+
+{% endblock %}
+
+{% block content %}
+<section id="content" class="single post">
+  <h2>
+      <a href="{{ SITEURL }}/{{ article.url }}" rel="bookmark"
+         title="Permalink to {{ article.title|striptags }}">{{ article.title }}</a>
+  </h2>
+  <h4 style="margin-top:0px;">
+      {{ article.date.strftime("%Y/%m/%d") }} · {{ '<a href="%s/category/%s">%s</a>' % (SITEURL, article.category|lower(), article.category|lower()) }}
+  </h4><!-- /.post-info -->
+  <div class="entry-content">
+    {{ article.content }}
+  </div><!-- /.entry-content -->
+  <div class="separator"></div>
+</section>
+{% endblock %}
