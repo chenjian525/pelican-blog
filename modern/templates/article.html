@@ -18,7 +18,8 @@
          title="Permalink to {{ article.title|striptags }}">{{ article.title }}</a>
   </h2>
   <h4 style="margin-top:0px;">
-      {{ article.date.strftime("%Y/%m/%d") }} · {{ '<a href="%s/category/%s">%s</a>' % (SITEURL, article.category|lower(), article.category|lower()) }}
+      {{ article.date.strftime("%Y/%m/%d") }} ·
+      {{ '<a href="%s/category/%s">%s</a>' % (SITEURL, article.category|lower(), article.category|lower()) }}
   </h4><!-- /.post-info -->
   <div class="entry-content">
     {{ article.content }}
